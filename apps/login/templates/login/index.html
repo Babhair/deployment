@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-	<h1>Hello World</h1>
+	<h1>Welcome!</h1>
 {% if messages %}
 	<ul class="messages">
     	{% for message in messages %}
@@ -14,17 +14,18 @@
 {% endif %}
 	<form method='post' action='/register'><br>
 		{% csrf_token %}
-		First Name: <input type="text" name="first_name"><br>
-		Last Name: <input type="text" name="last_name"><br>
-		Email: <input type="text" name="email"><br>
+		Name: <input type="text" name="name"><br>
+		<!-- Last Name: <input type="text" name="last_name"><br> -->
+		Username: <input type="text" name="username"><br>
 		password: <input type="password" name="password"><br>
 		Confirm pw: <input type="password" name="confirm_password"><br>
+		<!-- Date Hired: <input type="date" name="date_hired"> -->
 		<input type="Submit" value="Register">
 	</form>
 
 	<form method='post' action='/login'><br>
 		{% csrf_token %}
-		Email: <input type="text" name="email"><br>
+		Username: <input type="text" name="username"><br>
 		password: <input type="password" name="password"><br>
 		<input type="Submit" value="Login">
 	</form>

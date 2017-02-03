@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Dashboard</title>
+</head>
+<body>
+	<a href="/dashboard/logout">Logout</a>
+	<h2>Hello, {{request.session.current_user_name}}</h2>
+
+	<h4>Your Trip Schedules</h4>
+	{% for trip in user_list %}
+		Destination: <a href="/dashboard/trip/{{trip.id}}">{{trip.destination}}</a><br>
+		Travel Start Date: {{trip.start}}<br>
+		Travel End Date: {{trip.end}}<br>
+		Plan: {{trip.description}}<br><hr>
+	{% endfor %}
+
+	<h4>Other User's Travel Plan</h4>
+	{% for trip in others_list %}
+		Name: {{trip.creator.name}}<br>
+		Destination: <a href="/dashboard/trip/{{trip.id}}">{{trip.destination}}</a><br>
+		Travel Start Date: {{trip.start}}<br>
+		Travel End Date: {{trip.end}}<br>
+		Do You Want to Join?<br>
+		<form method="post" action="/dashboard/join">
+		{% csrf_token %}
+			<input type="hidden" name="trip.id" value='{{trip.id}}'>
+			<input type="submit" value="Join"><hr>
+		</form>
+	{% endfor %}
+
+	<a href="/dashboard/add">Add Travel Plan</a>
+</body>
+</html>

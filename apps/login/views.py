@@ -10,7 +10,7 @@ def register(request):
 	did_register = User.objects.register(request)
 	
 	if did_register:
-		return render(request, 'login/success.html')
+		return redirect('/dashboard')
 	else:
 		return redirect('/')
 
@@ -19,6 +19,6 @@ def login(request):
 	did_login = User.objects.login(request)
 
 	if did_login:
-		return render(request, 'login/success.html')
+		return redirect('/dashboard')
 	else:
 		return redirect('/')	
